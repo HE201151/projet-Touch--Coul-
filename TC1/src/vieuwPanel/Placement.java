@@ -1,6 +1,7 @@
 package vieuwPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -19,6 +20,7 @@ import javax.swing.JComboBox;
 public class Placement extends JFrame {
 
 	private JPanel contentPane;
+	String positionBouton;
 
 	/**
 	 * Launch the application.
@@ -112,8 +114,15 @@ public class Placement extends JFrame {
 		for(i=0;i<=9;i++){
 			for(j=0;j<=9;j++){
 			maGrille[i][j]= new JButton();
-			maGrille[i][j].setName(""+i+j);
+			maGrille[i][j].setName(""+(i+1)+(j+1));
+			maGrille[i][j].addActionListener(new ActionListener(){
+	            public void actionPerformed(ActionEvent e){		// quand on clique sur le bouton on donne le nom de la case (qui sont ses coordonées)
+	            	positionBouton=(((Component) e.getSource()).getName()+"");
+	            	System.out.println(positionBouton);
+	            }
+			});
 			panel.add(maGrille[i][j]);
+			
 			}
 		}
 		
